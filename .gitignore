@@ -1,0 +1,10 @@
+# Git ignore content
+# Ignore build artifacts
+/build
+
+# Ignore Python environment
+/venv
+__pycache__
+
+# Ignore temporary VS Code files
+.vscode

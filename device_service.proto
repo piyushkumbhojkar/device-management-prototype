@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package device;
+
+service DeviceManagement {
+  rpc RegisterDevice (RegisterDeviceRequest) returns (RegisterDeviceResponse);
+  rpc SetDeviceStatus (SetDeviceStatusRequest) returns (SetDeviceStatusResponse);
+  rpc GetDeviceInfo (GetDeviceInfoRequest) returns (GetDeviceInfoResponse);
+  rpc InitiateDeviceAction (InitiateDeviceActionRequest) returns (InitiateDeviceActionResponse);
+  rpc GetDeviceActionStatus (GetDeviceActionStatusRequest) returns (GetDeviceActionStatusResponse);
+}
+
+enum DeviceStatus {
+  UNKNOWN = 0;
+  IDLE = 1;
+  BUSY = 2;
+  OFFLINE = 3;
+  MAINTENANCE = 4;
+  UPDATING = 5;
+  ERROR = 6;
+}
+
+message Device {
+  string id = 1;
+  string firmware_version = 2;
+  DeviceStatus status = 3;
+}
+
+message RegisterDeviceRequest {
+  string device_id = 1;
+  string initial_firmware_version = 2;
+}
+
+message RegisterDeviceResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message SetDeviceStatusRequest {
+  string device_id = 1;
+  DeviceStatus status = 2;
+}
+
+message SetDeviceStatusResponse {
+  bool success = 1;
+}
+
+message GetDeviceInfoRequest {
+  string device_id = 1;
+}
+
+message GetDeviceInfoResponse {
+  Device device = 1;
+}
+
+enum ActionType {
+  UNSPECIFIED_ACTION = 0;
+  SOFTWARE_UPDATE = 1;
+  REBOOT = 2;
+}
+
+message InitiateDeviceActionRequest {
+  string device_id = 1;
+  ActionType action_type = 2;
+  string parameters = 3;
+}
+
+message InitiateDeviceActionResponse {
+  string action_id = 1;
+  bool success = 2;
+  string message = 3;
+}
+
+enum ActionStatus {
+  PENDING = 0;
+  RUNNING = 1;
+  COMPLETED = 2;
+  FAILED = 3;
+}
+
+message GetDeviceActionStatusRequest {
+  string action_id = 1;
+}
+
+message GetDeviceActionStatusResponse {
+  string action_id = 1;
+  ActionStatus status = 2;
+  string details = 3;
+}
