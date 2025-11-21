@@ -33,6 +33,9 @@ def run():
     status_parser = subparsers.add_parser("check-action", help="Check status of an action")
     status_parser.add_argument("--action-id", required=True, help="Action ID")
 
+    # 5. List Command
+    list_parser = subparsers.add_parser("list", help="List all registered devices and their status")
+
     args = parser.parse_args()
 
     try:
@@ -72,6 +75,18 @@ def run():
             # Map enum to string
             status_map = {0:"PENDING", 1:"RUNNING", 2:"COMPLETED", 3:"FAILED"}
             print(f"Action {response.action_id}: {status_map.get(response.status, 'UNKNOWN')}")
+
+        elif args.command == "list":
+            response = stub.ListDevices(device_service_pb2.ListDevicesRequest())
+            if not response.devices:
+                print("No devices currently registered.")
+            else:
+                status_map = {0:"UNKNOWN", 1:"IDLE", 2:"BUSY", 3:"OFFLINE", 4:"MAINTENANCE", 5:"UPDATING", 6:"ERROR"}
+                print(f"Registered Devices ({len(response.devices)} total):")
+                print("-" * 30)
+                for device in response.devices:
+                    status_str = status_map.get(device.status, "UNKNOWN")
+                    print(f"ID: {device.id:10} | Status: {status_str:12} | Version: {device.firmware_version}")
 
         else:
             parser.print_help()

@@ -18,13 +18,21 @@ using namespace device;
 
 // Helper to generate a simple random Action ID
 std::string GenerateActionID() {
-    static std::random_device rd;
-    static std::mt19937 gen(rd());
+    static std::random_device randDevice;
+    static std::mt19937 gen(randDevice());
     static std::uniform_int_distribution<> dis(1000, 9999);
     return "ACTION-" + std::to_string(dis(gen));
 }
 
 class DeviceServiceImpl final : public DeviceManagement::Service {
+    private:
+    // In-memory storage
+    std::map<std::string, Device> device_db_;
+    // Map of ActionID -> {Status, Details}
+    std::map<std::string, std::pair<ActionStatus, std::string>> action_db_;
+    
+    // Mutex to protect shared data
+    std::mutex db_mutex_;
 public:
     // 1. Register Device
     Status RegisterDevice(ServerContext* context, const RegisterDeviceRequest* request,
@@ -145,14 +153,16 @@ public:
         return Status::OK;
     }
 
-private:
-    // In-memory storage
-    std::map<std::string, Device> device_db_;
-    // Map of ActionID -> {Status, Details}
-    std::map<std::string, std::pair<ActionStatus, std::string>> action_db_;
-    
-    // Mutex to protect shared data
-    std::mutex db_mutex_;
+    Status ListDevices(ServerContext* context, const ListDevicesRequest* request,
+                   ListDevicesResponse* response) override {
+        std::lock_guard<std::mutex> lock(db_mutex_);
+
+        for (const auto& pair : device_db_) {
+            // Add a new Device object to the response list and copy the data
+            *response->add_devices() = pair.second;
+        }
+        return Status::OK;
+    }
 };
 
 void RunServer() {

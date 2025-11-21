@@ -24,19 +24,19 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x64\x65vice_service.proto\x12\x06\x64\x65vice\"T\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x10\x66irmware_version\x18\x02 \x01(\t\x12$\n\x06status\x18\x03 \x01(\x0e\x32\x14.device.DeviceStatus\"L\n\x15RegisterDeviceRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12 \n\x18initial_firmware_version\x18\x02 \x01(\t\":\n\x16RegisterDeviceResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"Q\n\x16SetDeviceStatusRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12$\n\x06status\x18\x02 \x01(\x0e\x32\x14.device.DeviceStatus\"*\n\x17SetDeviceStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\")\n\x14GetDeviceInfoRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\"7\n\x15GetDeviceInfoResponse\x12\x1e\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x0e.device.Device\"m\n\x1bInitiateDeviceActionRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12\'\n\x0b\x61\x63tion_type\x18\x02 \x01(\x0e\x32\x12.device.ActionType\x12\x12\n\nparameters\x18\x03 \x01(\t\"S\n\x1cInitiateDeviceActionResponse\x12\x11\n\taction_id\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\x12\x0f\n\x07message\x18\x03 \x01(\t\"1\n\x1cGetDeviceActionStatusRequest\x12\x11\n\taction_id\x18\x01 \x01(\t\"i\n\x1dGetDeviceActionStatusResponse\x12\x11\n\taction_id\x18\x01 \x01(\t\x12$\n\x06status\x18\x02 \x01(\x0e\x32\x14.device.ActionStatus\x12\x0f\n\x07\x64\x65tails\x18\x03 \x01(\t*f\n\x0c\x44\x65viceStatus\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04IDLE\x10\x01\x12\x08\n\x04\x42USY\x10\x02\x12\x0b\n\x07OFFLINE\x10\x03\x12\x0f\n\x0bMAINTENANCE\x10\x04\x12\x0c\n\x08UPDATING\x10\x05\x12\t\n\x05\x45RROR\x10\x06*E\n\nActionType\x12\x16\n\x12UNSPECIFIED_ACTION\x10\x00\x12\x13\n\x0fSOFTWARE_UPDATE\x10\x01\x12\n\n\x06REBOOT\x10\x02*C\n\x0c\x41\x63tionStatus\x12\x0b\n\x07PENDING\x10\x00\x12\x0b\n\x07RUNNING\x10\x01\x12\r\n\tCOMPLETED\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\x32\xce\x03\n\x10\x44\x65viceManagement\x12O\n\x0eRegisterDevice\x12\x1d.device.RegisterDeviceRequest\x1a\x1e.device.RegisterDeviceResponse\x12R\n\x0fSetDeviceStatus\x12\x1e.device.SetDeviceStatusRequest\x1a\x1f.device.SetDeviceStatusResponse\x12L\n\rGetDeviceInfo\x12\x1c.device.GetDeviceInfoRequest\x1a\x1d.device.GetDeviceInfoResponse\x12\x61\n\x14InitiateDeviceAction\x12#.device.InitiateDeviceActionRequest\x1a$.device.InitiateDeviceActionResponse\x12\x64\n\x15GetDeviceActionStatus\x12$.device.GetDeviceActionStatusRequest\x1a%.device.GetDeviceActionStatusResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14\x64\x65vice_service.proto\x12\x06\x64\x65vice\"T\n\x06\x44\x65vice\x12\n\n\x02id\x18\x01 \x01(\t\x12\x18\n\x10\x66irmware_version\x18\x02 \x01(\t\x12$\n\x06status\x18\x03 \x01(\x0e\x32\x14.device.DeviceStatus\"L\n\x15RegisterDeviceRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12 \n\x18initial_firmware_version\x18\x02 \x01(\t\":\n\x16RegisterDeviceResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"Q\n\x16SetDeviceStatusRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12$\n\x06status\x18\x02 \x01(\x0e\x32\x14.device.DeviceStatus\"*\n\x17SetDeviceStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\")\n\x14GetDeviceInfoRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\"7\n\x15GetDeviceInfoResponse\x12\x1e\n\x06\x64\x65vice\x18\x01 \x01(\x0b\x32\x0e.device.Device\"m\n\x1bInitiateDeviceActionRequest\x12\x11\n\tdevice_id\x18\x01 \x01(\t\x12\'\n\x0b\x61\x63tion_type\x18\x02 \x01(\x0e\x32\x12.device.ActionType\x12\x12\n\nparameters\x18\x03 \x01(\t\"S\n\x1cInitiateDeviceActionResponse\x12\x11\n\taction_id\x18\x01 \x01(\t\x12\x0f\n\x07success\x18\x02 \x01(\x08\x12\x0f\n\x07message\x18\x03 \x01(\t\"1\n\x1cGetDeviceActionStatusRequest\x12\x11\n\taction_id\x18\x01 \x01(\t\"i\n\x1dGetDeviceActionStatusResponse\x12\x11\n\taction_id\x18\x01 \x01(\t\x12$\n\x06status\x18\x02 \x01(\x0e\x32\x14.device.ActionStatus\x12\x0f\n\x07\x64\x65tails\x18\x03 \x01(\t\"\x14\n\x12ListDevicesRequest\"6\n\x13ListDevicesResponse\x12\x1f\n\x07\x64\x65vices\x18\x01 \x03(\x0b\x32\x0e.device.Device*f\n\x0c\x44\x65viceStatus\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x08\n\x04IDLE\x10\x01\x12\x08\n\x04\x42USY\x10\x02\x12\x0b\n\x07OFFLINE\x10\x03\x12\x0f\n\x0bMAINTENANCE\x10\x04\x12\x0c\n\x08UPDATING\x10\x05\x12\t\n\x05\x45RROR\x10\x06*E\n\nActionType\x12\x16\n\x12UNSPECIFIED_ACTION\x10\x00\x12\x13\n\x0fSOFTWARE_UPDATE\x10\x01\x12\n\n\x06REBOOT\x10\x02*C\n\x0c\x41\x63tionStatus\x12\x0b\n\x07PENDING\x10\x00\x12\x0b\n\x07RUNNING\x10\x01\x12\r\n\tCOMPLETED\x10\x02\x12\n\n\x06\x46\x41ILED\x10\x03\x32\x96\x04\n\x10\x44\x65viceManagement\x12O\n\x0eRegisterDevice\x12\x1d.device.RegisterDeviceRequest\x1a\x1e.device.RegisterDeviceResponse\x12R\n\x0fSetDeviceStatus\x12\x1e.device.SetDeviceStatusRequest\x1a\x1f.device.SetDeviceStatusResponse\x12L\n\rGetDeviceInfo\x12\x1c.device.GetDeviceInfoRequest\x1a\x1d.device.GetDeviceInfoResponse\x12\x61\n\x14InitiateDeviceAction\x12#.device.InitiateDeviceActionRequest\x1a$.device.InitiateDeviceActionResponse\x12\x64\n\x15GetDeviceActionStatus\x12$.device.GetDeviceActionStatusRequest\x1a%.device.GetDeviceActionStatusResponse\x12\x46\n\x0bListDevices\x12\x1a.device.ListDevicesRequest\x1a\x1b.device.ListDevicesResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'device_service_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_DEVICESTATUS']._serialized_start=837
-  _globals['_DEVICESTATUS']._serialized_end=939
-  _globals['_ACTIONTYPE']._serialized_start=941
-  _globals['_ACTIONTYPE']._serialized_end=1010
-  _globals['_ACTIONSTATUS']._serialized_start=1012
-  _globals['_ACTIONSTATUS']._serialized_end=1079
+  _globals['_DEVICESTATUS']._serialized_start=915
+  _globals['_DEVICESTATUS']._serialized_end=1017
+  _globals['_ACTIONTYPE']._serialized_start=1019
+  _globals['_ACTIONTYPE']._serialized_end=1088
+  _globals['_ACTIONSTATUS']._serialized_start=1090
+  _globals['_ACTIONSTATUS']._serialized_end=1157
   _globals['_DEVICE']._serialized_start=32
   _globals['_DEVICE']._serialized_end=116
   _globals['_REGISTERDEVICEREQUEST']._serialized_start=118
@@ -59,6 +59,10 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_GETDEVICEACTIONSTATUSREQUEST']._serialized_end=728
   _globals['_GETDEVICEACTIONSTATUSRESPONSE']._serialized_start=730
   _globals['_GETDEVICEACTIONSTATUSRESPONSE']._serialized_end=835
-  _globals['_DEVICEMANAGEMENT']._serialized_start=1082
-  _globals['_DEVICEMANAGEMENT']._serialized_end=1544
+  _globals['_LISTDEVICESREQUEST']._serialized_start=837
+  _globals['_LISTDEVICESREQUEST']._serialized_end=857
+  _globals['_LISTDEVICESRESPONSE']._serialized_start=859
+  _globals['_LISTDEVICESRESPONSE']._serialized_end=913
+  _globals['_DEVICEMANAGEMENT']._serialized_start=1160
+  _globals['_DEVICEMANAGEMENT']._serialized_end=1694
 # @@protoc_insertion_point(module_scope)

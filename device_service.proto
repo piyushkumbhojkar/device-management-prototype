@@ -8,6 +8,7 @@ service DeviceManagement {
   rpc GetDeviceInfo (GetDeviceInfoRequest) returns (GetDeviceInfoResponse);
   rpc InitiateDeviceAction (InitiateDeviceActionRequest) returns (InitiateDeviceActionResponse);
   rpc GetDeviceActionStatus (GetDeviceActionStatusRequest) returns (GetDeviceActionStatusResponse);
+  rpc ListDevices (ListDevicesRequest) returns (ListDevicesResponse);
 }
 
 enum DeviceStatus {
@@ -86,4 +87,12 @@ message GetDeviceActionStatusResponse {
   string action_id = 1;
   ActionStatus status = 2;
   string details = 3;
+}
+
+message ListDevicesRequest {
+    
+}
+
+message ListDevicesResponse {
+    repeated Device devices = 1;
 }

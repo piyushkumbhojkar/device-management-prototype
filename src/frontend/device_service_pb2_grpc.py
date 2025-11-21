@@ -59,6 +59,11 @@ class DeviceManagementStub(object):
                 request_serializer=device__service__pb2.GetDeviceActionStatusRequest.SerializeToString,
                 response_deserializer=device__service__pb2.GetDeviceActionStatusResponse.FromString,
                 _registered_method=True)
+        self.ListDevices = channel.unary_unary(
+                '/device.DeviceManagement/ListDevices',
+                request_serializer=device__service__pb2.ListDevicesRequest.SerializeToString,
+                response_deserializer=device__service__pb2.ListDevicesResponse.FromString,
+                _registered_method=True)
 
 
 class DeviceManagementServicer(object):
@@ -94,6 +99,12 @@ class DeviceManagementServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ListDevices(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_DeviceManagementServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -121,6 +132,11 @@ def add_DeviceManagementServicer_to_server(servicer, server):
                     servicer.GetDeviceActionStatus,
                     request_deserializer=device__service__pb2.GetDeviceActionStatusRequest.FromString,
                     response_serializer=device__service__pb2.GetDeviceActionStatusResponse.SerializeToString,
+            ),
+            'ListDevices': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListDevices,
+                    request_deserializer=device__service__pb2.ListDevicesRequest.FromString,
+                    response_serializer=device__service__pb2.ListDevicesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -258,6 +274,33 @@ class DeviceManagement(object):
             '/device.DeviceManagement/GetDeviceActionStatus',
             device__service__pb2.GetDeviceActionStatusRequest.SerializeToString,
             device__service__pb2.GetDeviceActionStatusResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ListDevices(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/device.DeviceManagement/ListDevices',
+            device__service__pb2.ListDevicesRequest.SerializeToString,
+            device__service__pb2.ListDevicesResponse.FromString,
             options,
             channel_credentials,
             insecure,
