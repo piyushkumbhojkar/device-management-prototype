@@ -104,7 +104,7 @@ The complete API specification is defined in `device_service.proto` and includes
 - **GetDeviceInfo**: Retrieves device information and current state
 - **InitiateDeviceAction**: Starts an asynchronous operation and returns an action identifier
 - **GetDeviceActionStatus**: Queries the status of a specific action
-- **ListDevices**: Retrieves list of device with their firmware version
+- **ListDevices**: Retrieves list of all registered devices with their firmware version
 
 ## Architecture
 
