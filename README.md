@@ -89,6 +89,12 @@ Monitors the progress of asynchronous operations (PENDING, RUNNING, COMPLETED).
 python3 src/frontend/client.py check-action --action-id ACTION-1234
 ```
 
+### List All Registered Devices
+Lists all the registered devices with their firmware version.
+```bash
+python3 src/frontend/client.py list
+```
+
 ## API Reference
 
 The complete API specification is defined in `device_service.proto` and includes the following RPC methods:
@@ -98,6 +104,7 @@ The complete API specification is defined in `device_service.proto` and includes
 - **GetDeviceInfo**: Retrieves device information and current state
 - **InitiateDeviceAction**: Starts an asynchronous operation and returns an action identifier
 - **GetDeviceActionStatus**: Queries the status of a specific action
+- **ListDevices**: Retrieves list of device with their firmware version
 
 ## Architecture
 
